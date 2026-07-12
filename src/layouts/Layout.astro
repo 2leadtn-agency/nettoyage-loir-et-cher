@@ -1,0 +1,215 @@
+---
+import FloatingWhatsapp from "../components/FloatingWhatsapp.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Nettoyage Loir et Cher - Nettoyage professionnel à Blois",
+  description = "Nettoyage de bureaux, remise en état après travaux, nettoyage de vitres à Blois et dans le Loir-et-Cher. Intervention rapide pour les professionnels.",
+  ogImage = "/images/hero-nettoyage-bureaux-blois.jpg",
+} = Astro.props;
+
+const SITE_URL = "https://nettoyage-loir-et-cher.lumerank.fr";
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:image" content={`${SITE_URL}${ogImage}`} />
+    <meta property="og:title" content="Nettoyage Loir et Cher - Nettoyage professionnel à Blois" />
+    <meta
+      property="og:description"
+      content="Nettoyage de bureaux, remise en état après travaux, nettoyage de vitres à Blois et dans le Loir-et-Cher. Intervention rapide pour les professionnels."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+  </head>
+  <body>
+    <slot />
+
+    <FloatingWhatsapp />
+
+    <script src="/chatbot.js" is:inline></script>
+    <script src="/apercu-bar.js" is:inline></script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-gold: #c6952e;
+    --color-gold-deep: #8a6416;
+    --color-gold-light: #e8c15e;
+    --color-gold-pale: #f6e7c4;
+    --color-ink: #201d19;
+    --color-ink-soft: #55504a;
+    --color-cream: #fbf8f3;
+    --color-cream-alt: #f1e9d8;
+    --color-white: #ffffff;
+    --font-display: "Plus Jakarta Sans", sans-serif;
+    --font-body: "Inter", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    background: var(--color-cream);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+    color: var(--color-ink);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  section {
+    scroll-margin-top: 76px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+    margin-bottom: 14px;
+  }
+
+  .eyebrow .sparkle-svg {
+    width: 14px;
+    height: 14px;
+    color: var(--color-gold);
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--color-ink);
+    margin-bottom: 14px;
+  }
+
+  .section-subtitle {
+    color: var(--color-ink-soft);
+    font-size: 1rem;
+    max-width: 560px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 15px 26px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-gold {
+    background: var(--color-gold);
+    color: var(--color-ink);
+    box-shadow: 0 10px 24px rgba(198, 149, 46, 0.32);
+  }
+
+  .btn-gold:hover {
+    filter: brightness(1.04);
+  }
+
+  .btn-ink {
+    background: var(--color-ink);
+    color: var(--color-cream);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-cream);
+    border: 1.5px solid rgba(251, 248, 243, 0.4);
+  }
+
+  .btn-whatsapp {
+    background: #25d366;
+    color: #fff;
+  }
+
+  @media (min-width: 720px) {
+    .section-title {
+      font-size: 2.4rem;
+    }
+    .section-subtitle {
+      font-size: 1.1rem;
+    }
+  }
+</style>
